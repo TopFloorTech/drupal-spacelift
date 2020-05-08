@@ -32,7 +32,9 @@ function spacelift_preprocess_block(&$variables) {
   }
 
   $block_id = $variables['elements']['#id'];
-  $block = Block::load($block_id);
 
-  $variables['region'] = $block->getRegion();
+  if (isset($block_id)) {
+    $block = Block::load($block_id);
+    $variables['region'] = $block->getRegion();
+  }
 }
